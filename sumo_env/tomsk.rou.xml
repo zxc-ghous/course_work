@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2023-02-17 21:27:24 by Eclipse SUMO netedit Version 1.15.0
+<!-- generated on 2023-02-18 00:29:43 by Eclipse SUMO netedit Version 1.15.0
 -->
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-    <!-- Routes -->
-    <route id="r_0" edges="E0 E1"/>
     <!-- Vehicles, persons and containers (sorted by depart) -->
-    <flow id="f_0" begin="0.00" route="r_0" end="3600.00" vehsPerHour="18000.00"/>
+    <flow id="f_0" begin="0.00" from="-144411084#1" to="-E0" end="3600.00" vehsPerHour="1800.00"/>
+    <flow id="f_1" begin="0.00" from="-144411084#1" to="51075192#0" via="-984942162 202278318#0 55967887 51075189#0" end="3600.00" number="1800"/>
+    <flow id="f_10" begin="0.00" color="white" from="-888351373" to="459620805#0" end="3600.00" number="1800"/>
+    <flow id="f_11" begin="0.00" color="magenta" from="-848756373" to="144411084#0" end="3600.00" number="1800"/>
+    <flow id="f_12" begin="0.00" color="magenta" from="-848756373" to="888351375" end="3600.00" number="1800"/>
+    <flow id="f_13" begin="0.00" color="magenta" from="-848756373" to="459620805#0" end="3600.00" number="1800"/>
+    <flow id="f_14" begin="0.00" color="blue" from="-797043586" to="144411084#0" end="3600.00" number="1800"/>
+    <flow id="f_15" begin="0.00" color="blue" from="-797043586" to="888351375" end="3600.00" number="1800"/>
+    <flow id="f_16" begin="0.00" color="blue" from="-797043586" to="51075192#0" end="3600.00" number="1800"/>
+    <flow id="f_2" begin="0.00" from="-144411084#1" to="459620805#0" via="-984942162 202278318#0 55967887 237229576 55967885 27761358" end="3600.00" number="1800"/>
+    <flow id="f_3" begin="0.00" from="-144411084#1" to="888351375" via="-984942162 202278318#0 55967887 237229576 55967885 220644879 88720953 51075187 118893114" end="3600.00" number="1800"/>
+    <flow id="f_4" begin="0.00" color="cyan" from="E0" to="144411084#0" end="3600.00" number="1800"/>
+    <flow id="f_5" begin="0.00" color="cyan" from="E0" to="51075192#0" via="-984942162 202278318#0 55967887 51075189#0" end="3600.00" number="1800"/>
+    <flow id="f_6" begin="0.00" color="cyan" from="E0" to="459620805#0" via="-984942162 202278318#0 55967887 237229576 55967885 27761358" end="3600.00" number="1800"/>
+    <flow id="f_7" begin="0.00" color="cyan" from="E0" to="888351375" via="118893114" end="3600.00" number="1800"/>
+    <flow id="f_8" begin="0.00" color="white" from="-888351373" to="144411084#0" end="3600.00" number="1800"/>
+    <flow id="f_9" begin="0.00" color="white" from="-888351373" to="51075192#0" end="3600.00" number="1800"/>
 </routes>
