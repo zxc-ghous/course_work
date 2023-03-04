@@ -12,10 +12,11 @@ else:
     sys.exit("Please declare the environment variable 'SUMO_HOME'")
 
 
-def create_env(use_gui=False, num_seconds=100000):
+def create_env(use_gui=False, num_seconds=3600):
     env = gym.make('sumo-rl-v0',
                    net_file=r'C:\Users\sskil\PycharmProjects\course_work\sumo_env\2way_single_intersection.net.xml',
                    route_file=r'C:\Users\sskil\PycharmProjects\course_work\sumo_env\2way_single_intersection.rou.xml',
+                   out_csv_name=r'C:\Users\sskil\PycharmProjects\course_work\sumo_env\history.csv',
                    use_gui=use_gui,
                    num_seconds=num_seconds)
 
@@ -23,12 +24,8 @@ def create_env(use_gui=False, num_seconds=100000):
 
 
 if __name__ == '__main__':
-    env = create_env(True, 1)
-    print(env.action_space)
-    print(env.observation_space)
-
+    env = create_env(True,1)
     obs, _ = env.reset()
     done = False
     while not done:
         next_obs, next_rew, terminated, truncated, info = env.step(env.action_space.sample())
-        print(next_rew)
