@@ -1,4 +1,29 @@
-ну там будут машины дороги светофоры
 
-Discrete(4)
-Box(0.0, 1.0, (21,), float32)
+Rewards:
+    the reward is how much the total delay
+    (sum of the waiting times of all approaching vehicles) changed in relation to the previous time-step.
+
+Action:
+    The action space is discrete. Every 'delta_time' seconds,
+    each traffic signal agent can choose the next green phase configuration.
+
+Observation:
+    obs = [phase_one_hot, min_green, lane_1_density,...,lane_n_density, lane_1_queue,...,lane_n_queue]
+    phase_one_hot is a one-hot encoded vector indicating the current active green phase
+    min_green is a binary variable indicating whether min_green seconds have already passed in the current phase
+    lane_i_density is the number of vehicles in incoming lane i dividided by the total capacity of the lane
+    lane_i_queueis the number of queued (speed below 0.1 m/s) vehicles in incoming lane i divided by the total capacity of the lane
+
+Info:
+    system_total_stopped
+    system_total_waiting_time
+    system_mean_waiting_time
+    system_mean_speed
+
+2way_single_intersection.net.xml [For experiments]:
+    Discrete(4)
+    Box(0.0, 1.0, (21,), float32)
+
+3_road_single_inter.net.xml [For experiments]:
+    Discrete(4)
+    Box(0.0, 1.0, (15,), float32)
