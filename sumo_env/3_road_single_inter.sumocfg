@@ -1,0 +1,4 @@
+<configuration>
+    <net-file value="C:\Users\sskil\PycharmProjects\course_work\sumo_env\3_road_single_inter.net.xml"/>
+    <route-files value="C:\Users\sskil\PycharmProjects\course_work\sumo_env\3_road_poission.rou.xml"/>
+</configuration>
