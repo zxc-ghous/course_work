@@ -9,14 +9,14 @@ from simulations.training_simulation import create_env
 import argparse
 import time
 import os
-import tqdm
+import pprint
 
 parser = argparse.ArgumentParser(description='DDQN parameters')
 parser.add_argument('--gamma', type=float, default=0.95)
 parser.add_argument('--lr', type=float, default=0.004)
 parser.add_argument('--batch_size', type=int, default=32)
 parser.add_argument('--eps', type=float, default=1.0)
-parser.add_argument('--eps_decay', type=float, default=0.999)
+parser.add_argument('--eps_decay', type=float, default=0.985)
 parser.add_argument('--eps_min', type=float, default=0.01)
 args = parser.parse_args()
 
@@ -78,6 +78,9 @@ class ActionStateModel:
     def save(self, save_name):
         self.model.save(os.path.join(r'C:\Users\sskil\PycharmProjects\course_work\saved_models', save_name))
 
+    def load(self, folder_path):
+        self.model = tf.keras.models.load_model(folder_path)
+
 
 class Agent:
     def __init__(self, env):
@@ -112,10 +115,9 @@ class Agent:
             done, total_reward = False, 0
             state, _ = self.env.reset()
             while not done:
-                # print(f'TIME {time} started', end=' ')
                 action = self.model.get_action(state)
                 next_state, reward, terminated, truncated, _ = self.env.step(action)
-                # print(f'current reward {reward}')
+                self.reward_history.append(reward)
                 done = terminated or truncated
                 self.buffer.put(state, action, reward * 0.01, next_state, done)
                 total_reward += reward
@@ -125,17 +127,11 @@ class Agent:
                 self.replay()
             self.target_update()
             print('EP{} EpisodeReward={} Time={}'.format(ep, total_reward, time.time() - ep_start_time))
-            self.reward_history.append(total_reward)
-
-
-# TODO:
-#       сделать скрипт парсер на информацию из истории прецендентов
-#        модель быстро переобучается? почему то он просто держит зеленый сигнал на одних и тех же светофорах
 
 
 if __name__ == '__main__':
-    env = create_env(True, 250)
+    env = create_env(True, 5000)
     agent = Agent(env)
-    start = time.time()
-    agent.train(max_episodes=300)
-    print(f'train time={time.time() - start}')  # train time=56.33223628997803
+    agent.train(1)
+    agent.model.save('3road_model')
+
