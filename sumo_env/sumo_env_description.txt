@@ -20,10 +20,11 @@ Info:
     system_mean_waiting_time
     system_mean_speed
 
-2way_single_intersection.net.xml [For experiments]:
-    Discrete(4)
-    Box(0.0, 1.0, (21,), float32)
-
-3_road_single_inter.net.xml [For experiments]:
-    Discrete(4)
-    Box(0.0, 1.0, (15,), float32)
+tomsk.rou:
+    реальная длительность фаз светофоров
+tomsk_single_lights:
+    1 агент
+    у агента 4 действия на переключение фаз светофоров на западе, севере, востоке и юге по отдельности
+tomsk_multi_lights:
+    1 агент
+    у агента 2 действия на переключение фаз светофоров на западе и севере, и на юге и востоке

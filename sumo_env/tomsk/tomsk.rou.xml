@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2023-04-09 19:15:58 by Eclipse SUMO netedit Version 1.15.0
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Routes -->
+    <route id="r_0" edges="-984942162 202278318#0 55967887 237229576 55967885 220644879 88720953 51075187 118893114 888351375" color="yellow"/>
+    <route id="r_1" edges="-984942162 202278318#0 55967887 237229576 55967885 27761358 459620805#0" color="yellow"/>
+    <route id="r_10" edges="-797043586 27761362 88720953 55967883 172400373 984942162" color="blue"/>
+    <route id="r_11" edges="-797043586 27761362 88720953 55967883 220644877 55967887 51075189#0 51075192#0" color="blue"/>
+    <route id="r_2" edges="-984942162 202278318#0 55967887 51075189#0 51075192#0" color="yellow"/>
+    <route id="r_3" edges="-888351373 -797043580#1 51075188 172400373 984942162" color="magenta"/>
+    <route id="r_4" edges="-888351373 -797043580#1 51075188 220644877 55967887 51075189#0 51075192#0" color="magenta"/>
+    <route id="r_5" edges="-888351373 -797043580#1 51075188 220644877 55967887 237229576 55967885 27761358 459620805#0" color="magenta"/>
+    <route id="r_6" edges="-848756373 51075190 55967885 220644879 88720953 55967883 172400373 984942162" color="cyan"/>
+    <route id="r_7" edges="-848756373 51075190 55967885 220644879 88720953 51075187 118893114 888351375" color="cyan"/>
+    <route id="r_8" edges="-848756373 51075190 55967885 27761358 459620805#0" color="cyan"/>
+    <route id="r_9" edges="-797043586 27761362 88720953 51075187 118893114 888351375" color="blue"/>
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <flow id="f_0" begin="0.00" route="r_0" end="3600.00" probability="0.04"/>
+    <flow id="f_1" begin="0.00" route="r_1" end="3600.00" probability="0.05"/>
+    <flow id="f_10" begin="0.00" color="blue" route="r_10" end="3600.00" probability="0.05"/>
+    <flow id="f_11" begin="0.00" color="blue" route="r_11" end="3600.00" probability="0.06"/>
+    <flow id="f_2" begin="0.00" route="r_2" end="3600.00" probability="0.06"/>
+    <flow id="f_3" begin="0.00" color="magenta" route="r_3" end="3600.00" probability="0.04"/>
+    <flow id="f_4" begin="0.00" color="magenta" route="r_4" end="3600.00" probability="0.05"/>
+    <flow id="f_5" begin="0.00" color="magenta" route="r_5" end="3600.00" probability="0.06"/>
+    <flow id="f_6" begin="0.00" color="cyan" route="r_6" end="3600.00" probability="0.04"/>
+    <flow id="f_7" begin="0.00" color="cyan" route="r_7" end="3600.00" probability="0.05"/>
+    <flow id="f_8" begin="0.00" color="cyan" route="r_8" end="3600.00" probability="0.06"/>
+    <flow id="f_9" begin="0.00" color="blue" route="r_9" end="3600.00" probability="0.04"/>
+</routes>

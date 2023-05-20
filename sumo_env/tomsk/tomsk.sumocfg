@@ -1,0 +1,4 @@
+<configuration>
+    <net-file value="C:\Users\sskil\PycharmProjects\course_work\sumo_env\tomsk\tomsk.net.xml"/>
+    <route-files value="C:\Users\sskil\PycharmProjects\course_work\sumo_env\tomsk\tomsk.rou.xml"/>
+</configuration>

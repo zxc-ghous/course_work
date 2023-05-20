@@ -1,18 +1,18 @@
-from models.DDQN import Agent
-from simulations.training_simulation import create_env
-import seaborn as sns
-import matplotlib.pyplot as plt
+from stable_baselines3 import A2C
+from stable_baselines3.common.evaluation import evaluate_policy
+from stable_baselines3.common.env_util import make_vec_env
+from simulations.training_simulation import create_2single_env
 
+# TODO: сглаживание для графиков
+#       парсер summary файлов из sumo и тоже для них графики
+#       графики для того чтобы сравнить результаты работы алгоритмов
+#       время жизни demand элементов в сетях и увеличить интенсивность отдельно для tomsk.rou
+#       посмотреть на то какие результаты у single_env
+#       сделать MARL сети
 if __name__ == '__main__':
-    env = create_env(False, 5000)
-    agent = Agent(env)
-    agent.train(30)
+    model = A2C.load(r"C:\Users\sskil\PycharmProjects\course_work\saved_models\sb3_A2C.zip")
+    test_env = create_2single_env(True)
 
-    fig, ax = plt.subplots(figsize=(15, 6))
-    agent.model.save('3road_model')
-    sns.lineplot(x=list(range(len(agent.reward_history))),
-                 y=agent.reward_history)
-    plt.show()
+    mean_reward, std_reward = evaluate_policy(model, test_env, n_eval_episodes=100)
 
-# TODO: выбрать сколько должно быть машин в час на дорогах среды (1800/час не много ли?)
-#       add_per_agent_info установить на False?
+    print(f"mean_reward:{mean_reward:.2f} +/- {std_reward:.2f}")
