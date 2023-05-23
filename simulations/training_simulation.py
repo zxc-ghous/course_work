@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser(description='simulations parameters')
 parser.add_argument('--net_file_single',
                     type=str,
                     default=r'C:\Users\sskil\PycharmProjects\course_work\sumo_env\tomsk\tomsk_single_lights.net.xml')
-parser.add_argument('--net_file_2signle',
+parser.add_argument('--net_file_2single',
                     type=str,
                     default=r'C:\Users\sskil\PycharmProjects\course_work\sumo_env\tomsk\tomsk_2single_lights.net.xml')
 parser.add_argument('--route_file',
@@ -27,27 +27,30 @@ parser.add_argument('--out_csv_name',
 args = parser.parse_args()
 
 
+# deprecated
 def create_single_env(use_gui=False, num_seconds=3500, out_csv_name=args.out_csv_name):
-    env = gym.make('sumo-rl-v0',
-                   net_file=args.net_file_single,
-                   route_file=args.route_file,
-                   out_csv_name=out_csv_name,
-                   use_gui=use_gui,
-                   num_seconds=num_seconds,
-                   add_per_agent_info=False)
+    env = MySumoEnvironment(net_file=args.net_file_single, route_file=args.route_file,
+                            out_csv_name=out_csv_name, use_gui=use_gui,
+                            num_seconds=num_seconds, add_per_agent_info=False, single_agent=True)
 
     return env
 
 
+# deprecated
 def create_2single_env(use_gui=False, num_seconds=3500, out_csv_name=args.out_csv_name):
-    env = gym.make('sumo-rl-v0',
-                   net_file=args.net_file_2signle,
-                   route_file=args.route_file,
-                   out_csv_name=r"C:\Users\sskil\PycharmProjects\course_work\saved_history\sb3_PPO\history",
-                   use_gui=use_gui,
-                   num_seconds=num_seconds,
-                   add_per_agent_info=False)
+    env = MySumoEnvironment(net_file=args.net_file_2signle, route_file=args.route_file,
+                            out_csv_name=out_csv_name, use_gui=use_gui,
+                            num_seconds=num_seconds, add_per_agent_info=False, single_agent=True)
 
+    return env
+
+
+def create_env(net_file, route_file,
+               out_csv_name=args.out_csv_name, use_gui=False, num_seconds=3600):
+    env = MySumoEnvironment(net_file=net_file, route_file=route_file,
+                            out_csv_name=out_csv_name, use_gui=use_gui,
+                            num_seconds=num_seconds, add_per_agent_info=False,
+                            single_agent=True, sumo_warnings=False)
     return env
 
 
@@ -68,8 +71,11 @@ class MySumoEnvironment(SumoEnvironment):
 
 
 if __name__ == '__main__':
-    env = MySumoEnvironment(args.net_file_2signle, args.route_file, single_agent=True, num_seconds=3000)
+    from stable_baselines3.common.env_util import make_vec_env
+
+    env = make_vec_env(create_env, env_kwargs=dict(net_file=args.net_file_2single, route_file=args.route_file,
+                                                   use_gui=True))
     env.reset()
     while True:
-        next_obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
-        print(env._get_system_info())
+        obs, rewards, dones, infos = env.step(np.array([env.action_space.sample()]))
+        print(infos)
